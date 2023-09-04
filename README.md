@@ -2,6 +2,10 @@
 
 Example S4 Scripts
 
+## Run
+
+Eg `S4 ./models/grating.lua`
+
 ## Docker
 
 Build: `docker build --tag s4 --file ./docker/Dockerfile .`
