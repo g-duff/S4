@@ -14,4 +14,9 @@ RUN git clone https://github.com/victorliu/S4.git && \
 	cd S4 && \
 	make && mv ./build/S4 /usr/local/bin/S4
 
+ENV SIMULATION_DATA=/var/lib/simulations
+RUN mkdir -p "$SIMULATION_DATA"
+VOLUME /var/lib/simulations/models
+
+WORKDIR /var/lib/simulations
 ENTRYPOINT ["S4"]
