@@ -12,7 +12,7 @@ RUN apt-get -y install libfftw3-dev libopenblas-dev libsuitesparse-dev
 WORKDIR /usr/local/lib/
 RUN git clone https://github.com/victorliu/S4.git && \
 	cd S4 && \
-	make && mv ./build/S4 /usr/local/bin/S4
+	make && ln -s /usr/local/lib/S4/build/S4 /usr/local/bin/S4
 
 ENV S4_DATA=/var/lib/S4/
 RUN mkdir -p "$S4_DATA"
