@@ -8,9 +8,9 @@ Eg `S4 ./models/grating.lua`
 
 ## Docker
 
-Build: `docker build --tag s4 --file ./docker/Dockerfile .`
+Build: `docker build --tag S4 --file ./docker/Dockerfile .`
 
-Run: `docker run -it --rm --mount type=bind,source=./models,target=/var/lib/S4/models s4 ./models/grating.lua`
+Run: `docker run -it --rm --mount type=bind,source=./models,target=/var/lib/S4/models S4 ./models/grating.lua`
 
 ## Install
 
