@@ -35,8 +35,15 @@ RUN apt-get install -y \
 
 COPY --from=build /usr/local/lib/S4/build/S4 /usr/local/bin/S4
 
-ENV S4_DATA=/var/lib/S4/
-RUN mkdir -p "$S4_DATA"
+RUN groupadd -r S4 --gid=999; \
+	useradd -r -g S4 --uid=999 --home-dir=/var/lib/S4 --shell=/bin/bash S4; \
+	mkdir -p /var/lib/S4; \
+	chown -R S4:S4 /var/lib/S4
+
+ENV S4_MODELS=/var/lib/S4/models
+RUN mkdir -p "$S4_MODELS" && \
+	chown -R S4:S4 "$S4_MODELS" && \
+	chmod 777 "$S4_MODELS"
 WORKDIR /var/lib/S4/
 VOLUME /var/lib/S4/models
 
