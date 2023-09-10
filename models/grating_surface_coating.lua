@@ -16,28 +16,23 @@ S:AddMaterial('Water', {1.3*1.3, 0})
 -- Structure definition
 S:AddLayer('Substrate', 0, 'Silica')
 
+-- Set analyte background then overlay silicon nitride feature
 S:AddLayer('Grating', GRATING_THICKNESS, 'Water')
 S:SetLayerPatternRectangle(
-	'Grating',			-- which layer to alter
-	'SiliconNitride',		-- material in rectangle
-	{0, 0},				-- center
-	0,				-- tilt angle (degrees)
-	{PERIOD*FILL_FACTOR/2, 0}	-- half-widths
+	'Grating',
+	'Analyte',
+	{0, 0},
+	0,
+	{PERIOD*FILL_FACTOR/2 + ANALYTE_THICKNESS, 0}
 )
 S:SetLayerPatternRectangle(
 	'Grating',
-	'Analyte',
-	{-PERIOD*FILL_FACTOR/2 - ANALYTE_THICKNESS/2, 0},
+	'SiliconNitride',
+	{0, 0},
 	0,
-	{ANALYTE_THICKNESS/2, 0}
+	{PERIOD*FILL_FACTOR/2, 0}
 )
-S:SetLayerPatternRectangle(
-	'Grating',
-	'Analyte',
-	{PERIOD*FILL_FACTOR/2 + ANALYTE_THICKNESS/2, 0},
-	0,
-	{ANALYTE_THICKNESS/2, 0}
-)
+
 S:AddLayer('GratingTopCoating', ANALYTE_THICKNESS, 'Water')
 S:SetLayerPatternRectangle(
 	'GratingTopCoating',
